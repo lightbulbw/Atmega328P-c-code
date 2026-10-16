@@ -1,7 +1,17 @@
 
 #Makefile example 
-#this makefile will be the same for all programs except for the filename to compile. 
-#Just find and replace "main" with your filename
+/*Instructions
+
+This makefile will be the same for all programs except for the filename to compile. 
+Just find and replace "main" with your filename
+
+*If using an arduino uno on a linux device the only line you have to change is
+AVRGCCDIR="/home/jessica/arduino-install/arduino-1.8.19/hardware/tools/avr"
+
+*If you are using a nano and/or are on a windows device then read the makefile
+ */
+
+
 #----------first declare variables(all strings/text) used later -------
 
 #set path(need to do this even if its already in the search path)
