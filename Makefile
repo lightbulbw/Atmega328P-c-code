@@ -1,17 +1,5 @@
 
 #Makefile example 
-/*Instructions
-
-This makefile will be the same for all programs except for the filename to compile. 
-Just find and replace "main" with your filename
-
-*If using an arduino uno on a linux device the only line you have to change is
-AVRGCCDIR="/home/jessica/arduino-install/arduino-1.8.19/hardware/tools/avr"
-
-*If you are using a nano and/or are on a windows device then read the makefile
- */
-
-
 #----------first declare variables(all strings/text) used later -------
 
 #set path(need to do this even if its already in the search path)
@@ -42,7 +30,7 @@ OBJCOPY=$(AVRGCCDIR)/bin/avr-objcopy
 DUDECONF=$(AVRGCCDIR)/etc/avrdude.conf
 
 #set speed of data transmission(if have wrong speed then cant talk to chip)
-# for some nanos its 57600 while for uno and some nanos its 11560 which is the default
+# for nano its 57600 while for uno its 11560 which is the default
 #BAUTRATE=-b57600
 #(for uno board) its default so no need to set it
 #the -b is put here instead of in avrdude because if you dont set baudrate then you give avrdude nothing rather then -b nothing. and avrdude will complain if it gets -b nothing
@@ -56,7 +44,7 @@ CFLAGS=-g -mmcu=$(MCU) -Wall -Wstrict-prototypes -Os -mcall-prologues
 #-------------
 #this specifies what the make or make all shell command should do
 #you tell it what file you want as the default
-all: main.hex
+all: blinkled.hex
 #--------------
 #this specifies what the make help shell command should do
 #echo is a command that prints text to screen, the @ hides the command so that you dont see echo text
@@ -69,18 +57,18 @@ help:
 #-------------------
 #here we say how to make the file we specified in all
 #here we say if we want .hex then we need the .out file and if we want .out we need .o and to get .o we need .c 
-main.hex : main.out 
-	$(AVRGCCDIR)/bin/avr-size main.out
-	$(OBJCOPY) -R .eeprom -O ihex main.out main.hex 
-main.out : main.o 
-	$(CC) $(CFLAGS) -o main.out -Wl,-Map,main.map main.o 
-main.o : main.c 
-	$(CC) $(CFLAGS) -Os -c main.c
+blinkled.hex : blinkled.out 
+	$(AVRGCCDIR)/bin/avr-size blinkled.out
+	$(OBJCOPY) -R .eeprom -O ihex blinkled.out blinkled.hex 
+blinkled.out : blinkled.o 
+	$(CC) $(CFLAGS) -o blinkled.out -Wl,-Map,blinkled.map blinkled.o 
+blinkled.o : blinkled.c 
+	$(CC) $(CFLAGS) -Os -c blinkled.c
 
 #---------------
 #this specifies what the make load shell command should do
-load: main.hex
-	$(LOADCMD) $(LOADARG)main.hex
+load: blinkled.hex
+	$(LOADCMD) $(LOADARG)blinkled.hex
 
 #-------------------
 #this specifies what the make rdfuses shell command should do
