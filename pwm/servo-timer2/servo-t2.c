@@ -30,7 +30,7 @@ void init_pwm(void) {
 	
 	//TCCR2A(Timer/Counter Control Register A) contains bits(COM2A1,COM2A0,WGM21,WGM20, and others)
 	// COM2A1  COM2A0  
-	//   0      0 Normal port operation, OC0A disconnected.
+	//   0      0 Normal port operation, OC2A disconnected.
 	//   0      1 Toggle OC2A on Compare Match
 	//   1      0 Clear OC2A on Compare Match(Set output to low level)
 	//   1      1 Set OC2A on Compare Match(Set output to high level)

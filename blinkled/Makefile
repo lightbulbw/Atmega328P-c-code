@@ -30,7 +30,7 @@ OBJCOPY=$(AVRGCCDIR)/bin/avr-objcopy
 DUDECONF=$(AVRGCCDIR)/etc/avrdude.conf
 
 #set speed of data transmission(if have wrong speed then cant talk to chip)
-# for nano its 57600 while for uno its 11560 which is the default
+# for some nanos its 57600 while for uno and some nanos its 11560 which is the default
 #BAUTRATE=-b57600
 #(for uno board) its default so no need to set it
 #the -b is put here instead of in avrdude because if you dont set baudrate then you give avrdude nothing rather then -b nothing. and avrdude will complain if it gets -b nothing
