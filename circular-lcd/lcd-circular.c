@@ -365,5 +365,5 @@ int main(void) {
 	while(1) {
         // Keep the MCU here so it doesn't reset or crash
     }
-
+return(0);
 }
