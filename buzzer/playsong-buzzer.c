@@ -167,20 +167,14 @@ int main(void){
     		sei();
 
     		if (ticks >= totalticks) {
-        		cli();
-
         		note++;
 
         		if(note >= COUNT){
             			finished = 1;
-            			TIMSK0 = 0;
-            			TCCR0B = 0;
             			BUZZERPORT &= ~(1 << BUZZERPIN);
         		}else{
             			loadnote();
         		}
-
-        		sei();
     		}
 	}
     	
